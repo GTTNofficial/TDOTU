@@ -13,6 +13,14 @@
 			"Enabled": false
 		},
 		{
+			"Name": "SteamVR",
+			"Enabled": false
+		},
+		{
+			"Name": "OculusLibrary",
+			"Enabled": false
+		},
+		{
 			"Name": "HTTPChunkInstaller",
 			"Enabled": false
 		}
