@@ -3,6 +3,13 @@
 	"EngineAssociation": "4.17",
 	"Category": "",
 	"Description": "",
+	"Modules": [
+		{
+			"Name": "TDOTU",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "Paper2D",
