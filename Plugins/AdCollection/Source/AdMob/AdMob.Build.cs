@@ -5,6 +5,11 @@ using UnrealBuildTool;
 
 public class AdMob : ModuleRules
 {
+    private string ModulePath
+    {
+        get { return ModuleDirectory; }
+    }
+
 	public AdMob(TargetInfo Target)
 	{
 		
@@ -51,18 +56,75 @@ public class AdMob : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.IOS)
         {
             PrivateIncludePaths.Add("Private/IOS");
+            PrivateIncludePaths.Add("../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/");
+
+            string strStaticPath = Path.GetFullPath( Path.Combine( ModulePath, "../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/" ) );
+
+            PublicLibraryPaths.Add(strStaticPath);
 
             PublicAdditionalFrameworks.Add(
             new UEBuildFramework(
             "GoogleMobileAds",														// Framework name
-            "../ThirdParty/ThirdPartyFrameworks/GoogleMobileAds.embeddedframework.zip")
+            "../AdCollection/ThirdPartyFrameworks/GoogleMobileAds.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
             new UEBuildFramework(
-            "AdsUtil",														// Framework name
-            "../ThirdParty/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
+            "UnityAds",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/UnityAds.embeddedframework.zip")
             );
+
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "VungleSDK",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/VungleSDK.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "Chartboost",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/Chartboost.embeddedframework.zip")
+            );
+
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdColony",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/AdColony-iOS-SDK-3.zip")
+            );
+
+
+            // adapter
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "UnityAdapter",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/UnityAdapter-2.1.0.0.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "ChartboostAdapter",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/ChartboostAdapter-6.6.3.0.zip")
+            );
+            
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdColonyAdapter",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/AdColonyAdapter-3.1.1.0.zip")
+            );
+
+
+            // helper lib
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdsUtil",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
+            );
+
+            PublicAdditionalLibraries.Add("VungleAdapter");
+            PublicAdditionalShadowFiles.Add("../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/libVungleAdapter.a");
 
 
             PublicFrameworks.AddRange(

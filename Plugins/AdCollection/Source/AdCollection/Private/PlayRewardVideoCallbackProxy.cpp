@@ -1,9 +1,4 @@
-/*
-* EZ-Mobile-Ads - unreal engine 4 ads plugin
-*
-* Copyright (C) 2017 feiwu <feixuwu@outlook.com> All Rights Reserved.
-*/
-
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AdCollection.h"
 #include "PlayRewardVideoCallbackProxy.h"
@@ -32,10 +27,7 @@ UPlayRewardVideoCallbackProxy* UPlayRewardVideoCallbackProxy::PlayRewardedVideo(
 IAdModuleInterface* UPlayRewardVideoCallbackProxy::FindAdsModule(EAdType adType)
 {
 	const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EAdType"), true);
-	if (!EnumPtr)
-	{
-		return nullptr;
-	}
+	if (!EnumPtr) return nullptr;
 
 	FString EnumName = EnumPtr->GetNameByValue((int64)adType).ToString();
 
